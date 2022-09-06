@@ -34,6 +34,12 @@
             height: 54px;
             padding: 20px;
         }
+        .logofooter {
+            cursor: pointer;
+            position: relative;
+            width: 100px;
+            height: 18px;
+        }
 
         .title {
             color: #f4f4f4;
@@ -70,6 +76,14 @@
             background: #202020;
             border-radius: 9px;
             box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+        }
+
+        footer {
+            position: absolute;
+            top: 95%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #F0F0F0;
         }
 
 
@@ -297,7 +311,7 @@
 
                 },
                 error: function (xhr, status, error) {
-                    warningPop_up("The connection to local 3464 is falied.<br>backend not installed<br><br>Contact GazziLabs support.");
+                    warningPop_up("Connection refused.<br>backend not installed<br><br><br>Download <a href='https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend'>Filetangram.exe</a> ");
                 }
             })
         }
@@ -348,7 +362,7 @@
 
                 },
                 error: function (xhr, status, error) {
-                    warningPop_up("The connection to local 3464 is falied.<br>Contact GazziLabs support.");
+                    warningPop_up("The connection falied.<br>Contact GazziLabs support.");
                 }
             })
         }
@@ -415,7 +429,7 @@
                     $("#MediaList").empty();
                 },
                 error: function (xhr, status, error) {
-                    warningPop_up("The connection to local 3464 is falied.<br>Contact GazziLabs support.");
+                    warningPop_up("Connection refused.<br>Contact GazziLabs support.");
                 }
             })
         }
@@ -474,13 +488,11 @@
 
 
     </section>
+    <footer>Download <a href='https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend'>Filetangram.exe</a>
+    </footer>
 
     <button accesskey="x" type="submit" class="button-37" onclick="btnClick()" value="실행"
         style="position: absolute;top: 83%;right: 12%;">Start Process</button>
-
-    <a onclick="sendmessagePop_up()" style="position: absolute;top: 83%;left: 12%; cursor: pointer;"><img title="Support" src="Frontend/images/support_icon.svg"></a>
-    <a onclick="sendmessagePop_up()" style="position: absolute;top: 85%;left: 15%; color: #F0F0F0; cursor: pointer;">Contact Us</a>
-
     <script>
 
         function warningPop_up(obj) {
