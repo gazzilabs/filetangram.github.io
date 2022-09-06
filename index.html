@@ -92,7 +92,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 80%;
+            width: 90%;
             height: 80%;
             padding: 40px;
             transform: translate(-50%, -50%);
@@ -267,6 +267,10 @@
             width: 300px;
             height: 100px;
         }
+        
+        #MediaList tbody td{
+            font-size: 12px;
+        }
 
     </style>
     <script type="text/javascript">
@@ -374,7 +378,7 @@
             var tr;
 
             tr = document.createElement('TR');
-            td.innerHTML = '<div style="color:#fff ; cursor: pointer; height: 25px;" onclick="showfilelist(' + i + ')">' +
+            td.innerHTML = '<div style="color:#fff ; cursor: pointer; height: 18px;font-size:14px; " onclick="showfilelist(' + i + ')">' +
                 filefolder + '</div><div id="medialist' + i + '" style="display:none;"></div>'
             tr.appendChild(td);
 
@@ -392,7 +396,7 @@
             var tr;
 
             tr = document.createElement('TR');
-            td.innerHTML = '<div style="color:#fff; height: 25px;">' + csvlistitem + '</div>'
+            td.innerHTML = '<div style="color:#fff; height: 18px;font-size:14px; ">' + csvlistitem + '</div>'
             tr.appendChild(td);
 
             var tablelist = 'medialist' + i;
@@ -492,7 +496,7 @@
     </footer>
 
     <button accesskey="x" type="submit" class="button-37" onclick="btnClick()" value="실행"
-        style="position: absolute;top: 83%;right: 12%;">Start Process</button>
+        style="position: absolute;top: 83%;right: 7%;">Start Process</button>
     <script>
 
         function warningPop_up(obj) {
