@@ -257,6 +257,51 @@
     </style>
     <script type="text/javascript">
 
+
+
+
+        function checkservice() {
+            $("#MediaList").empty();
+            var params = "folderpath=";
+            var url = 'http://127.0.0.1:3464/getfilelist';
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: params,
+                success: function (result) {
+
+                    var jsonObj = JSON.parse(result);
+                    console.log(jsonObj)
+                    console.log("testload")
+                    var tr = document.createElement('TR');
+                    var td = document.createElement('TD');
+
+                    if (jsonObj.length > 0) {
+                        for (i = 0; i < jsonObj.length; i++) {
+                            var filefolder = jsonObj[i].fbxfolder
+                            var csvlist = jsonObj[i].csvfilelist
+                            printFileFolder(filefolder, csvlist, i)
+                        }
+                    } else {
+                        var td = document.createElement('TD');
+                        var tr;
+
+                        tr = document.createElement('TR');
+                        td.innerHTML = '<div style="color:#fff ; cursor: pointer; height: 25px; padding-top:60px;">Service online</div>'
+                        tr.appendChild(td);
+
+                        document.getElementById('MediaList').appendChild(tr);
+
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    warningPop_up("The connection to local 3464 is falied.<br>backend not installed<br><br>Contact GazziLabs support.");
+                }
+            })
+        }
+
         //
 
         function getfolderpathinput() {
@@ -401,7 +446,7 @@
     <p class="title">File Tangram</p>
 </header>
 
-<body>
+<body onload="checkservice()">
     <div class="warningpopuphide" id="warningclosed" onclick="closewarningPop_up()"></div>
     <div class="warningpopup-containerhide" id="warningpopup-container">
         <center>
@@ -422,7 +467,6 @@
             </div>
             <table style="margin: 30px auto;">
                 <tbody id="MediaList">
-                    <td>If you had any problem contact us</td>
                 </tbody>
             </table>
         </form>
@@ -442,7 +486,7 @@
             document.getElementById("warningclosed").className = 'warningpopuptarget';
             document.getElementById("warningpopup-container").className = 'warningpopup-container';
             document.getElementById("warningpopup-container").innerHTML = '';
-            document.getElementById("warningpopup-container").innerHTML = '<div class="warningMessage"><h2>Error</h2><a>' + obj + '</a><br><br><input type="button" class="button-37" onclick="closewarningPop_up()" value="Close"></div><a class="warningpopup-close" onclick="closewarningPop_up()">X</a>';
+            document.getElementById("warningpopup-container").innerHTML = '<div class="warningMessage"><h2>Error</h2><a>' + obj + '</a><br><br><input type="button" class="button-37" onclick="sendmessagePop_up()" value="Contact Support"></div><a class="warningpopup-close" onclick="closewarningPop_up()">X</a>';
         }
 
 
@@ -451,6 +495,7 @@
             document.getElementById("warningclosed").className = 'warningpopuphide';
             document.getElementById("warningpopup-container").className = 'warningpopup-containerhide';
             document.getElementById("warningpopup-container").innerHTML = '';
+            location.reload()
         }
 
         function successUpdatePop_up() {
