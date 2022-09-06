@@ -281,27 +281,16 @@
         function checkservice() {
             $("#MediaList").empty();
             var params = "folderpath=";
-            var url = 'http://127.0.0.1:3464/getfilelist';
+            var url = 'http://127.0.0.1:3464/alive';
             $.ajax({
                 type: "GET",
                 url: url,
                 data: params,
                 success: function (result) {
 
-                    var jsonObj = JSON.parse(result);
-                    console.log(jsonObj)
-                    console.log("testload")
+                    if(result == "call Success") {
                     var tr = document.createElement('TR');
                     var td = document.createElement('TD');
-
-                    if (jsonObj.length > 0) {
-                        for (i = 0; i < jsonObj.length; i++) {
-                            var filefolder = jsonObj[i].fbxfolder
-                            var csvlist = jsonObj[i].csvfilelist
-                            printFileFolder(filefolder, csvlist, i)
-                        }
-                    } else {
-                        var td = document.createElement('TD');
                         var tr;
 
                         tr = document.createElement('TR');
@@ -311,8 +300,6 @@
                         document.getElementById('MediaList').appendChild(tr);
 
                     }
-
-
                 },
                 error: function (xhr, status, error) {
                     warningPop_up("Connection refused.<br>backend not installed<br><br><br>Download <a href='https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend'>Filetangram.exe</a> ");
