@@ -410,6 +410,7 @@
             }
         }
 
+        //3D사람동작 분류 실행
         function sendmover() {
             folderpathinput = document.getElementById("folderpathcopy").value;
             var encodepath = encodeURIComponent(folderpathinput);
@@ -424,7 +425,7 @@
                 data: params,
                 success: function (result) {
                     console.log(result);
-                    successUpdatePop_up("OK");
+                    successUpdatePop_up("3D사람동작 분류 실행");
                     $("#MediaList").empty();
                 },
                 error: function (xhr, status, error) {
@@ -435,31 +436,29 @@
 
 
 
-
+        //축구분류실행
         function btnClick() {
-            console.log('segundo btn')
-            /*
+            
             folderpathinput = document.getElementById("folderpathcopy").value;
             var encodepath = encodeURIComponent(folderpathinput);
 
 
             //alert(strJson)
             var params = "folderpath=" + encodepath;
-            var url = 'http://127.0.0.1:3464/filemover';
+            var url = 'http://127.0.0.1:3464/filemover2';
             $.ajax({
                 type: "GET",
                 url: url,
                 data: params,
                 success: function (result) {
                     console.log(result);
-                    successUpdatePop_up("OK");
+                    successUpdatePop_up("축구분류실행");
                     $("#MediaList").empty();
                 },
                 error: function (xhr, status, error) {
                     warningPop_up("Connection refused.<br>Contact GazziLabs support.");
                 }
             })
-            */
 
         }
 
@@ -533,12 +532,12 @@
             <tbody>
                 <tr>
                     <td style="padding: 0 10px ;">
-                        <button accesskey="x" type="submit" class="button-37" onclick="btnClick()"
+                        <button accesskey="x" type="submit" class="button-37" onclick="sendmover()"
                             value="3D사람동작 분류 실행">3D사람동작 분류
                             실행</button>
                     </td>
                     <td style="padding: 0 10px ;">
-                        <button accesskey="c" type="submit" class="button-37" onclick="sendmover()"
+                        <button accesskey="c" type="submit" class="button-37" onclick="btnClick()"
                             value="3D사람동작 분류 실행">축구
                             분류
                             실행</button>
@@ -579,7 +578,7 @@
             location.reload()
         }
 
-        function successUpdatePop_up() {
+        function successUpdatePop_up(obj) {
             var popupcontainer = document.getElementById("warningpopup-container");
             document.getElementById("warningclosed").className = 'warningpopuptarget';
             popupcontainer.className = 'warningpopup-container';
