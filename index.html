@@ -427,10 +427,31 @@
 
 
 
-        function btnClick() {
-            sendmover();
-        }
 
+        function btnClick() {
+            console.log('segundo btn')
+            folderpathinput = document.getElementById("folderpathcopy").value;
+            var encodepath = encodeURIComponent(folderpathinput);
+
+
+            //alert(strJson)
+            var params = "folderpath=" + encodepath;
+            var url = 'http://127.0.0.1:3464/filemover';
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: params,
+                success: function (result) {
+                    console.log(result);
+                    successUpdatePop_up("OK");
+                    $("#MediaList").empty();
+                },
+                error: function (xhr, status, error) {
+                    warningPop_up("Connection refused.<br>Contact GazziLabs support.");
+                }
+            })
+
+        }
 
 
 
@@ -482,8 +503,10 @@
     <footer>Download <a href='https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend'>Filetangram.exe</a>
     </footer>
 
-    <button accesskey="x" type="submit" class="button-37" onclick="btnClick()" value="실행"
+    <button accesskey="x" type="submit" class="button-37" onclick="sendmover()" value="Start Process"
         style="position: absolute;top: 83%;right: 7%;">Start Process</button>
+        <button accesskey="x" type="submit" class="button-37" onclick="btnClick()" value="Start Process"
+        style="position: absolute;top: 83%;right: 17%;">Start 2</button>
     <script>
 
         function warningPop_up(obj) {
