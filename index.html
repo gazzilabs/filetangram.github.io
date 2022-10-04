@@ -13,6 +13,15 @@
 
     <script type="text/javascript">
 
+        function nowDateUpdate() {
+            var nowDate = new Date();
+            var nowMonth = nowDate.getMonth() + 1
+            var today = nowDate.getFullYear() + "/" + nowMonth + "/" + nowDate.getDate();
+            var time = nowDate.getHours() + ":" + nowDate.getMinutes() + ":" + nowDate.getSeconds();
+            var dateTime = today + "-" + time;
+            return dateTime;
+            console.log(dateTime)
+        }
 
 
 
@@ -35,7 +44,7 @@
                     divServSt.innerHTML = "";
                     if (result == "call Success") {
                         divMain.innerHTML = '<div class="mainDivMsg"><div class="setps"><h1>1</h1><p>Copy and paste the folder path on form input.</p></div><div class="setps"><h1>2</h1><p>Click on Button 3D사람동작 분류 실행 or 축구 분류 실행</p></div><div class="setps"><h1>3</h1><p>Wait until the proccess is finished</p></div></div>';
-                        divServSt.innerHTML = '<div class="iconStatus"><img src="Frontend/images/connectedIcon.svg">&nbsp<span>Status: <span style="font-weight: 900; color: #13aa52;">CONNECTED</span></span></div><p class="lastcheck">Last Check: 2022/09/29 - 10:53:12 </p>'
+                        divServSt.innerHTML = '<div class="iconStatus"><img src="Frontend/images/connectedIcon.svg">&nbsp<span>Status: <span style="font-weight: 900; color: #13aa52;">CONNECTED</span></span></div><p class="lastcheck">Last Check: ' + nowDateUpdate() + '</p>'
                         buttonColor1.disabled = false;
                         buttonColor2.disabled = false;
                         buttonGetList.disabled = false;
@@ -46,7 +55,7 @@
                     divMain.innerHTML = "";
                     divServSt.innerHTML = "";
                     divMain.innerHTML = '<div style="position:absolute; top:45%; left: 50%; transform: translate(-50%, -50%);"><img src="Frontend/images/warningIcon.svg" style="height: 70px;"><h1 style="font-size:40px;">Warning!</h1>Connection refused.<br>Backend not installed.<br><br>Download &nbsp<a href="https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend">Filetangram.exe</a><br><br><input type="button" class="buttonContact" onclick="sendmessagePop_up()" value="Contact Support"></div>';
-                    divServSt.innerHTML = '<div class="iconStatus"><img src="Frontend/images/disconnectedIcon.svg">&nbsp<span>Status: <span style="font-weight: 900; color: #FF0000;">DISCONNECTED</span></span></div><p class="lastcheck">Last Check: 2022/09/29 - 10:53:12 </p>'
+                    divServSt.innerHTML = '<div class="iconStatus"><img src="Frontend/images/disconnectedIcon.svg">&nbsp<span>Status: <span style="font-weight: 900; color: #FF0000;">DISCONNECTED</span></span></div><p class="lastcheck">Last Check: ' + nowDateUpdate() + ' </p>'
                     //warningPop_up("Connection refused.<br>backend not installed<br><br><br>Download <a href='https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend'>Filetangram.exe</a> ");
                     buttonColor1.disabled = true;
                     buttonColor2.disabled = true;
