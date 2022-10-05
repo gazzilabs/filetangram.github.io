@@ -54,8 +54,9 @@
                 error: function (xhr, status, error) {
                     divMain.innerHTML = "";
                     divServSt.innerHTML = "";
-                    divMain.innerHTML = '<div style="position:absolute; top:45%; left: 50%; transform: translate(-50%, -50%);"><img src="Frontend/images/warningIcon.svg" style="height: 70px;"><h1 style="font-size:40px;">Warning!</h1>Connection refused.<br>Backend not installed.<br><br>Download &nbsp<a href="https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend">Filetangram.exe</a><br><br><input type="button" class="buttonContact" onclick="sendmessagePop_up()" value="Contact Support"></div>';
-                    divServSt.innerHTML = '<div class="iconStatus"><img src="Frontend/images/disconnectedIcon.svg">&nbsp<span>Status: <span style="font-weight: 900; color: #FF0000;">DISCONNECTED</span></span></div><p class="lastcheck">Last Check: ' + nowDateUpdate() + ' </p>'
+                    divMain.innerHTML = '<div class="mainDivMsg"><div class="setps"><h1>1</h1><p>Copy and paste the folder path on form input.</p></div><div class="setps"><h1>2</h1><p>Click on Button 3D사람동작 분류 실행 or 축구 분류 실행</p></div><div class="setps"><h1>3</h1><p>Wait until the proccess is finished</p></div></div><div style="position:absolute; top: 62%" >Connection refused.<br>Backend not installed.<br><br>Download &nbsp<a href="https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend">Filetangram.exe</a> or  <a href="#" onclick="sendmessagePop_up()">Contact Support</a></div>';
+                    //divMain.innerHTML = '<div style="position:absolute; top:45%; left: 50%; transform: translate(-50%, -50%);"><img src="Frontend/images/warningIcon.svg" style="height: 70px;"><h1 style="font-size:40px;">Warning!</h1>';
+                    divServSt.innerHTML = '<div class="iconStatus"><img src="Frontend/images/disconnectedIcon.svg">&nbsp<span>Status: <span style="font-weight: 900; color: #FFE600;">DISCONNECTED</span></span></div><p class="lastcheck">Last Check: ' + nowDateUpdate() + ' </p>'
                     //warningPop_up("Connection refused.<br>backend not installed<br><br><br>Download <a href='https://github.com/gazzilabs/filetangram.github.io/tree/main/Backend'>Filetangram.exe</a> ");
                     buttonColor1.disabled = true;
                     buttonColor2.disabled = true;
@@ -240,6 +241,30 @@
 
         //3D사람동작 분류 실행
         function sendmover() {
+            var buttonColor1 = document.getElementById('actionbut1');
+            var buttonColor2 = document.getElementById('actionbut2');
+            var buttonGetList = document.getElementById('btGetList');
+            var inputpath = document.getElementById('folderpathcopy');
+            buttonColor1.disabled = true;
+            buttonColor2.disabled = true;
+            buttonGetList.disabled = true;
+            inputpath.disabled = true;
+
+
+            //var divServSt = document.getElementById('servDivStatus');
+            var divMain = document.getElementById('serviceStatus');
+            var folderNum = document.getElementById('folderfilesnumber');
+            folderNum.innerHTML = "";
+            //divServSt.innerHTML = "";
+            divMain.innerHTML = "";
+            divMain.innerHTML = '<div class="processingCss"><div class="lds-ring"><div></div><div></div><div></div><div></div></div><div><h1>Processing...</h1><br><p>PLEASE WAIT</p></div></div>'
+            $("#MediaList").empty();
+
+
+
+
+
+
             folderpathinput = document.getElementById("folderpathcopy").value;
             var encodepath = encodeURIComponent(folderpathinput);
 
